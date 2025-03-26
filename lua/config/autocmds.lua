@@ -16,3 +16,16 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.b.autoformat = false
   end,
 })
+
+-- auto switch input method
+vim.api.nvim_create_autocmd({ 'FileType', 'InsertEnter' }, {
+  pattern = { 'markdown', 'text' },
+  callback = function()
+    vim.fn.system 'im-select.exe 2052'
+  end,
+})
+vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+  callback = function()
+    vim.fn.system 'im-select.exe 1033'
+  end,
+})
