@@ -1,3 +1,7 @@
+local function augroup(name)
+  return vim.api.nvim_create_augroup('lazyvim_' .. name, { clear = true })
+end
+
 -- 2 spaces indented for some files
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'lua', 'javascript' },
@@ -27,5 +31,15 @@ vim.api.nvim_create_autocmd({ 'FileType', 'InsertEnter' }, {
 vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
   callback = function()
     vim.fn.system 'im-select.exe 1033'
+  end,
+})
+
+-- override LazyVim's default autocmds to disable spell check
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'wrap_spell',
+  pattern = { 'text', 'plaintex', 'typst', 'gitcommit', 'markdown' },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = false
   end,
 })

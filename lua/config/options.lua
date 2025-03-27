@@ -1,3 +1,5 @@
+-- disable spell checking
+vim.opt.spell = false
 -- utf-8 encoding
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
