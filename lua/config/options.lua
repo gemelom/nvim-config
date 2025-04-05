@@ -12,3 +12,6 @@ vim.opt.breakindent = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+-- remove duplicate statusline for vimpostor/vim-tpipeline
+vim.opt.laststatus = 0
