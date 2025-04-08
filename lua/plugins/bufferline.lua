@@ -1,6 +1,4 @@
 return {
-  { 'vimpostor/vim-tpipeline', event = 'VeryLazy' },
-  -- buffer line
   {
     'akinsho/bufferline.nvim',
     event = 'VeryLazy',
