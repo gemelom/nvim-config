@@ -53,6 +53,8 @@ return {
             drag_and_drop = {
               insert_mode = true,
             },
+            -- disable warning messages
+            verbose = false,
             -- required for Windows users
             -- use_absolute_path = false,
           },
