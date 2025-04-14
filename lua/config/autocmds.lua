@@ -35,13 +35,7 @@ local function contains_chinese_chars(bufnr)
   return false
 end
 
-vim.api.nvim_create_autocmd({ 'FileType', 'InsertEnter' }, {
-  pattern = { 'markdown', 'text' },
-  callback = function()
-    vim.fn.system 'im-select.exe 2052'
-  end,
-})
-vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
   callback = function()
     local ft = vim.bo.filetype
     -- Only maintain Chinese input method if current file is markdown/text AND contains Chinese
@@ -50,6 +44,11 @@ vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
     else
       vim.fn.system 'im-select.exe 1033'
     end
+  end,
+})
+vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+  callback = function()
+    vim.fn.system 'im-select.exe 1033'
   end,
 })
 
