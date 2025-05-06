@@ -24,7 +24,7 @@ return {
   },
   {
     'quarto-dev/quarto-nvim',
-    ft = { 'quarto', 'python', 'markdown' },
+    ft = { 'ipynb', 'quarto', 'python', 'markdown' },
     dependencies = {
       'jmbuhr/otter.nvim',
       'nvim-treesitter/nvim-treesitter',
@@ -80,6 +80,7 @@ return {
       vim.keymap.set('n', '<leader>oh', ':MoltenHideOutput<CR>', { desc = 'close output window', silent = true })
       vim.keymap.set('n', '<leader>md', ':MoltenDelete<CR>', { desc = 'delete Molten cell', silent = true })
 
+      vim.keymap.set('n', '<leader>qa', ':lua local quarto = require("quarto"); quarto.setup(); quarto.activate()<CR>', { desc = '[a]ctivate', silent = true })
       local runner = require 'quarto.runner'
       vim.keymap.set('n', '<leader>rc', runner.run_cell, { desc = 'run cell', silent = true })
       vim.keymap.set('n', '<leader>ra', runner.run_above, { desc = 'run cell and above', silent = true })
