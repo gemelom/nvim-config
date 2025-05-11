@@ -5,7 +5,7 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = 'oaipro',
+      provider = 'copilot',
       vendors = {
         oaipro = {
           __inherited_from = 'openai',
@@ -68,6 +68,26 @@ return {
         },
         ft = { 'markdown', 'Avante' },
       },
+    },
+  },
+  {
+    'johnseth97/codex.nvim',
+    lazy = true,
+    keys = {
+      {
+        '<leader>cc',
+        function()
+          require('codex').toggle()
+        end,
+        desc = 'Toggle Codex popup',
+      },
+    },
+    opts = {
+      keymaps = {}, -- disable internal mapping
+      border = 'rounded', -- or 'double'
+      width = 0.8,
+      height = 0.8,
+      autoinstall = true,
     },
   },
   {
