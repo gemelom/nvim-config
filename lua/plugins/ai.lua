@@ -5,13 +5,13 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = 'copilot',
+      provider = 'openrouter',
       vendors = {
         oaipro = {
           __inherited_from = 'openai',
           api_key_name = 'OAIPRO_API_KEY',
           endpoint = 'https://api.oaipro.com/v1',
-          model = 'claude-3-7-sonnet-20250219-thinking',
+          model = 'claude-3-7-sonnet-20250219',
         },
         deepseek = {
           __inherited_from = 'openai',
@@ -25,6 +25,12 @@ return {
           api_key_name = 'DASHSCOPE_API_KEY',
           endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
           model = 'qwen-coder-plus-latest',
+        },
+        openrouter = {
+          __inherited_from = 'openai',
+          api_key_name = 'OPENROUTER_API_KEY',
+          endpoint = 'https://openrouter.ai/api/v1',
+          model = 'google/gemini-2.5-pro-preview',
         },
       },
     },
