@@ -5,8 +5,16 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = 'openrouter',
+      provider = 'copilot3',
       vendors = {
+        copilot2 = {
+          __inherited_from = 'copilot',
+          model = 'o3-mini',
+        },
+        copilot3 = {
+          __inherited_from = 'copilot',
+          model = 'claude-3.7-sonnet',
+        },
         oaipro = {
           __inherited_from = 'openai',
           api_key_name = 'OAIPRO_API_KEY',
