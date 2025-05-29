@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
 -- override LazyVim's default autocmds to disable spell check
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup 'wrap_spell',
-  pattern = { 'text', 'plaintex', 'typst', 'gitcommit', 'markdown' },
+  pattern = { 'text', 'plaintex', 'typst', 'gitcommit', 'markdown', 'tex', 'txt' },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = false
