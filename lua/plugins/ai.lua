@@ -6,35 +6,34 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = 'copilot3',
-      vendors = {
-        copilot2 = {
+      providers = {
+        ['copilot2'] = {
           __inherited_from = 'copilot',
           model = 'o3-mini',
         },
-        copilot3 = {
+        ['copilot3'] = {
           __inherited_from = 'copilot',
           model = 'claude-3.7-sonnet',
         },
-        oaipro = {
+        ['oaipro'] = {
           __inherited_from = 'openai',
           api_key_name = 'OAIPRO_API_KEY',
           endpoint = 'https://api.oaipro.com/v1',
           model = 'claude-3-7-sonnet-20250219',
         },
-        deepseek = {
+        ['deepseek'] = {
           __inherited_from = 'openai',
           api_key_name = 'DEEPSEEK_API_KEY',
           endpoint = 'https://api.deepseek.com',
           model = 'deepseek-coder',
-          max_completion_tokens = 8192,
         },
-        qianwen = {
+        ['qianwen'] = {
           __inherited_from = 'openai',
           api_key_name = 'DASHSCOPE_API_KEY',
           endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
           model = 'qwen-coder-plus-latest',
         },
-        openrouter = {
+        ['openrouter'] = {
           __inherited_from = 'openai',
           api_key_name = 'OPENROUTER_API_KEY',
           endpoint = 'https://openrouter.ai/api/v1',
