@@ -11,6 +11,7 @@ return {
 
       vim.g.vimtex_compiler_latexmk = {
         options = {
+          '--xelatex',
           '-synctex=1',
           '-interaction=nonstopmode',
         },
