@@ -5,7 +5,7 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = 'copilot3',
+      provider = 'copilot2',
       providers = {
         ['copilot2'] = {
           __inherited_from = 'copilot',
@@ -48,7 +48,7 @@ return {
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,
-      'echasnovski/mini.pick', -- for file_selector provider mini.pick
+      'nvim-mini/mini.pick', -- for file_selector provider mini.pick
       'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
       'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
       'ibhagwan/fzf-lua', -- for file_selector provider fzf
@@ -83,6 +83,15 @@ return {
       },
     },
   },
+  {
+    'olimorris/codecompanion.nvim',
+    opts = {},
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
+  { 'augmentcode/augment.vim' },
   {
     'johnseth97/codex.nvim',
     lazy = true,
@@ -131,5 +140,38 @@ return {
         },
       }
     end,
+  },
+  {
+    'greggh/claude-code.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- Required for git operations
+    },
+    config = function()
+      require('claude-code').setup()
+    end,
+  },
+  {
+    'coder/claudecode.nvim',
+    dependencies = { 'folke/snacks.nvim' },
+    config = true,
+    keys = {
+      { '<leader>a', nil, desc = 'AI/Claude Code' },
+      { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },
+      { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
+      { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = 'Resume Claude' },
+      { '<leader>aC', '<cmd>ClaudeCode --continue<cr>', desc = 'Continue Claude' },
+      { '<leader>am', '<cmd>ClaudeCodeSelectModel<cr>', desc = 'Select Claude model' },
+      { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
+      { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
+      {
+        '<leader>as',
+        '<cmd>ClaudeCodeTreeAdd<cr>',
+        desc = 'Add file',
+        ft = { 'NvimTree', 'neo-tree', 'oil', 'minifiles' },
+      },
+      -- Diff management
+      { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff' },
+      { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
+    },
   },
 }
