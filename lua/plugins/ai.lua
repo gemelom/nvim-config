@@ -10,7 +10,7 @@ return {
         auto_trigger = true,
         hide_during_completion = true,
         keymap = {
-          accept = '<C-Enter>',
+          accept = '<M-Enter>',
           next = '<M-]>',
           prev = '<M-[>',
           -- dismiss = '<C-n>',

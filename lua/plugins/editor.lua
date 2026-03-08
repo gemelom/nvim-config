@@ -1,11 +1,11 @@
 return {
-  {
-    'mistricky/codesnap.nvim',
-    build = 'make',
-    opts = {
-      watermark = '',
-    },
-  },
+  -- {
+  --   'mistricky/codesnap.nvim',
+  --   build = 'make',
+  --   opts = {
+  --     watermark = '',
+  --   },
+  -- },
   ---@type LazySpec
   {
     'mikavilpas/yazi.nvim',
