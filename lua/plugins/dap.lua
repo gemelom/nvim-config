@@ -8,6 +8,57 @@ return {
 
       dapui.setup(opts)
 
+      local repl_group = vim.api.nvim_create_augroup('dap-repl-blink-keymaps', { clear = true })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = repl_group,
+        pattern = 'dap-repl',
+        callback = function(event)
+          local cmp = require 'blink.cmp'
+
+          local function feed(key)
+            local keys = vim.api.nvim_replace_termcodes(key, true, false, true)
+            vim.api.nvim_feedkeys(keys, 'in', false)
+          end
+
+          vim.keymap.set('i', '<CR>', function()
+            if cmp.is_menu_visible() then
+              cmp.accept()
+            else
+              feed '<CR>'
+            end
+          end, {
+            buffer = event.buf,
+            silent = true,
+            desc = 'DAP REPL confirm completion or execute',
+          })
+
+          vim.keymap.set('i', '<Tab>', function()
+            if cmp.is_menu_visible() then
+              cmp.select_next()
+            else
+              feed '<Tab>'
+            end
+          end, {
+            buffer = event.buf,
+            silent = true,
+            desc = 'DAP REPL next completion item',
+          })
+
+          vim.keymap.set('i', '<S-Tab>', function()
+            if cmp.is_menu_visible() then
+              cmp.select_prev()
+            else
+              feed '<S-Tab>'
+            end
+          end, {
+            buffer = event.buf,
+            silent = true,
+            desc = 'DAP REPL previous completion item',
+          })
+        end,
+      })
+
       local group = 'dap-eval-keymap'
 
       local function set_eval_key()
