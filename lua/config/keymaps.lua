@@ -4,6 +4,7 @@ local opts = { noremap = true, silent = true }
 -- slower C-u and C-d
 keymap.set('n', '<C-u>', '15k')
 keymap.set('n', '<C-d>', '15j')
+keymap.set('n', '<D-s>', '<cmd>w<CR>')
 
 -- toggle input method between English (1033) and Chinese (2052)
 keymap.set('n', '<leader>im', function()

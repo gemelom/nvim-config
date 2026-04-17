@@ -59,6 +59,16 @@ return {
         end,
       })
 
+      dap.listeners.after.event_initialized['dapui_config'] = function()
+        dapui.open {}
+      end
+      dap.listeners.before.event_terminated['dapui_config'] = function()
+        dapui.close {}
+      end
+      dap.listeners.before.event_exited['dapui_config'] = function()
+        dapui.close {}
+      end
+
       local group = 'dap-eval-keymap'
 
       local function set_eval_key()
@@ -79,6 +89,11 @@ return {
       dap.listeners.before.event_exited[group] = remove_eval_key
     end,
     opts = {
+      element_mappings = {
+        hover = {
+          watch = {},
+        },
+      },
       layouts = {
         {
           elements = {
@@ -114,6 +129,13 @@ return {
           size = 12,
         },
       },
+    },
+  },
+  {
+    'mfussenegger/nvim-dap',
+    keys = {
+      { '<leader>do', function() require('dap').step_over() end, desc = 'Step Over' },
+      { '<leader>dO', function() require('dap').step_out() end, desc = 'Step Out' },
     },
   },
   {
