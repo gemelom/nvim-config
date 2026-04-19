@@ -6,7 +6,7 @@ This is a Neovim configuration built on top of [LazyVim](https://github.com/Lazy
 
 Mainly used for Python development, this configuration provides the following features:
 
-- **AI Integration**: Powered by [avante.nvim](https://github.com/yetone/avante.nvim) with support for multiple AI providers
+- **AI Integration**: Includes [copilot.lua](https://github.com/zbirenbaum/copilot.lua) and [claude-code.nvim](https://github.com/greggh/claude-code.nvim)
 - **UI Enhancements**: Beautiful UI with [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) theme and [noice.nvim](https://github.com/folke/noice.nvim) for better UI elements
 - **LSP Support**: Built-in LSP configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) using [pyright](https://github.com/microsoft/pyright) and [ruff](https://github.com/astral-sh/ruff)
 - **Debugging**: Integrated debugging with [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
