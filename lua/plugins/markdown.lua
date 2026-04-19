@@ -1,16 +1,19 @@
 return {
   {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    ft = { 'markdown' },
-    build = 'npm install',
-    keys = {
-      { '<leader>mp', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown Preview' },
+    'wallpants/github-preview.nvim',
+    cmd = { 'GithubPreviewToggle' },
+    keys = { '<leader>mpt' },
+    opts = {
+      -- config goes here
     },
-    init = function()
-      vim.g.mkdp_preview_options = {
-        disable_filename = 1,
-      }
+    config = function(_, opts)
+      local gpreview = require 'github-preview'
+      gpreview.setup(opts)
+
+      local fns = gpreview.fns
+      vim.keymap.set('n', '<leader>mp', fns.toggle)
+      vim.keymap.set('n', '<leader>mps', fns.single_file_toggle)
+      vim.keymap.set('n', '<leader>mpd', fns.details_tags_toggle)
     end,
   },
 }
