@@ -4,6 +4,7 @@ return {
     opts = {
       servers = {
         ty = {
+          mason = false,
           settings = {},
         },
         pyright = {
@@ -32,6 +33,7 @@ return {
           },
         },
         ruff = {
+          mason = false,
           settings = {
             lint = {
               ignore = {
